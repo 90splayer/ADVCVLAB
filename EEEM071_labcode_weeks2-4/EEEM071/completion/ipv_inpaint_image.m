@@ -17,6 +17,8 @@
 
 function out=ipv_inpaint_image(img,M)
 
+%img=imresize(img, 0.5);
+
 H=size(img,1);
 W=size(img,2);
 

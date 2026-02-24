@@ -66,8 +66,22 @@ for x=1:newW
         u = floor(u);
         v = floor(v);
         
-        if (u>0 & u<=W-1 & v>0 & v<=H-1) 
-           img_out(y,x,:)=img_in(v,u,:);
+        
+
+        if (u>0 & u<=W-1 & v>0 & v<=H-1)
+            A=img_in(floor(v), floor(u),:);
+            B=img_in(ceil(v), floor(u),:);
+            C=img_in(floor(v), ceil(u),:);
+            D=img_in(ceil(v), ceil(u),:);
+    
+            vertblend=u-floor(u);
+            horizblend=v-floor(v);
+    
+            E=A*(1-vertblend) + C*vertblend;
+            F=B*(1-vertblend) + D*vertblend;
+    
+            G=(1-horizblend)*E + horizblend*F;
+           img_out(y,x,:)=G;
         end
         
     end

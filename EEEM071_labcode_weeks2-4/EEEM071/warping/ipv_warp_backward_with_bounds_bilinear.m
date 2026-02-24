@@ -19,8 +19,20 @@ clear all;
 
 INPUT_IMAGE = 'surrey.png';
 
-img_in=double(imread(INPUT_IMAGE))./255;
-%img_in=ipv_cheqpattern(500,500,3,3);
+%img_in=double(imread(INPUT_IMAGE))./255;
+img_in=ipv_cheqpattern(500,500,3,3);
+
+img_in=imgaussfilt(img_in,1);
+
+% sigma = 1;
+% sz = 5;
+% [x,y] = meshgrid(-(sz-1)/2:(sz-1)/2, -(sz-1)/2:(sz-1)/2);
+% h = exp(-(x.^2 + y.^2)/(2*sigma^2));
+% h = h / sum(h(:));
+
+% h = fspecial('gaussian', [5 5], 1);    % if fspecial is available
+% img_in = imfilter(img_in, h, 'replicate');
+
 
 H=size(img_in,1);  % height
 W=size(img_in,2);  % width

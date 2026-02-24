@@ -18,6 +18,8 @@ clear all;
 
 img=double(imread('\ali.jpg'))./255;
 
+img=imresize(img, 0.5);
+
 M=roipoly(img);
 
 out=ipv_inpaint_image(img,M);
